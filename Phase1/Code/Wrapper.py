@@ -21,14 +21,12 @@ import numpy as np
 import cv2
 import argparse
 import os
-from skimage.feature import peak_local_max
-import random
 import math
 import glob
 
 
 # Reading imgs form the given directory, this will be replaced in server implementation
-def img_reading(folder):
+def img_reading(folder, scale):
     image_list = os.listdir(folder)
     image_list = [item for item in image_list if os.path.isfile(os.path.join(folder, item))]
     image_list.sort()
@@ -37,7 +35,7 @@ def img_reading(folder):
         file_path = os.path.join(folder, file)
         img = cv2.imread(file_path)
         y, x, c = np.shape(img)
-        img = cv2.resize(img, (int(y/2), int(x/2)))
+        img = cv2.resize(img, (int(y/scale), int(x/scale)))
         if img is not None:
             imgs.append(img)
 
@@ -293,8 +291,6 @@ def Pano(imgs, n_imgs, Hs, InputPath):
     if not len(intermediate) == 1:
         [os.remove(f) for f in image_files if os.path.isfile(f)]
 
-    # print("Stitching: " + str(os.listdir(folder)))
-    for i in range(len(intermediate)-1):
         Pipeline(InputPath2, intermediate, len(intermediate), pipeline=False)
 
 
@@ -311,11 +307,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--NumFeatures', default=100, help="Number of best features to extract from each image, Default:100")
     parser.add_argument('--Path', default="../Data/Train/Set1", help="Enter the folder name to imgs from your directory")
+    parser.add_argument('--Scale', default=1, help="If image is big add resize factor")
     Args = parser.parse_args()
     InputPath = Args.Path
+    Scale = int(Args.Scale)
 
     # Loading the imgs
-    imgs, n_imgs = img_reading(InputPath)
+    imgs, n_imgs = img_reading(InputPath, Scale)
 
     Pipeline(InputPath, imgs, n_imgs)
 
