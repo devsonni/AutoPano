@@ -35,7 +35,8 @@ def img_reading(folder, scale):
         file_path = os.path.join(folder, file)
         img = cv2.imread(file_path)
         y, x, c = np.shape(img)
-        img = cv2.resize(img, (int(y/scale), int(x/scale)))
+        if scale != 1:
+            img = cv2.resize(img, (int(y/scale), int(x/scale)))
         if img is not None:
             imgs.append(img)
 
