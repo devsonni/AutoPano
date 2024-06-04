@@ -39,5 +39,5 @@ python3 Wrapper.py --Path ../Data/Set1 --Scale 4
 ```
 
 ### Result    
-
+<code><img height="30" width="70" src="https://github.com/devsonni/AutoPano/blob/main/Phase1/Data/results/Panorama1.png"></code>
 
