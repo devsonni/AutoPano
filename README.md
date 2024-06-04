@@ -38,3 +38,6 @@ Example of running wrapper on custom dataset:
 python3 Wrapper.py --Path ../Data/Set1 --Scale 4
 ```
 
+### Result    
+
+
