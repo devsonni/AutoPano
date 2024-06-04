@@ -41,4 +41,4 @@ python3 Wrapper.py --Path ../Data/Set1 --Scale 4
 ### Result    
 <code><img height="700" width="900" src="https://github.com/devsonni/AutoPano/blob/main/Phase1/Data/results/Panorama1.png"></code>
 
-for detailed results check - [devsonni.github.io](https://devsonni.github.io/)
+for detailed results check - [devsonni.github.io/AutoPano](https://devsonni.github.io/project/autopano/)
