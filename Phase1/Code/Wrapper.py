@@ -274,7 +274,7 @@ def Pano(imgs, n_imgs, Hs, InputPath):
             cv2.imwrite(output_file_path, result)
 
     # reading the intermediate panorama -- add it back after blending is fixed
-    folder = "../Data/Train/Set" + str(InputPath2[-1]) + "/Panorama"
+    folder = "../Data/Set" + str(InputPath2[-1]) + "/Panorama"
     image_list = os.listdir(folder)
     image_list = [item for item in image_list if os.path.isfile(os.path.join(folder, item))]
     print("Stitching: ", image_list)
@@ -306,7 +306,7 @@ def Pipeline(InputPath, imgs, n_imgs, pipeline=True):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--NumFeatures', default=100, help="Number of best features to extract from each image, Default:100")
-    parser.add_argument('--Path', default="../Data/Train/Set1", help="Enter the folder name to imgs from your directory")
+    parser.add_argument('--Path', default="../Data/Set1", help="Enter the folder name to imgs from your directory")
     parser.add_argument('--Scale', default=1, help="If image is big add resize factor")
     Args = parser.parse_args()
     InputPath = Args.Path
